@@ -75,10 +75,6 @@ public class DefUserController extends ExceptionHandling {
         DefUser loginUser = defUserService.findDefUserByUsername(user.getUsername());
         UserPrinciple userPrinciple = new UserPrinciple(loginUser);
         HttpHeaders jwtHeader = getJWTHeader(userPrinciple);
-        //if(!loginUser.isProfileComplete()) {
-           // return ResponseEntity.status(HttpStatus.TEMPORARY_REDIRECT)
-                    //.header(HttpHeaders.LOCATION, "/client/complete-profile").build();
-        //}
         return new ResponseEntity<>(loginUser, jwtHeader, HttpStatus.OK);
     }
 
