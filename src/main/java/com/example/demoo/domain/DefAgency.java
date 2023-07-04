@@ -28,37 +28,37 @@ public class DefAgency {
     private List<DefVehicle> vehicles;
 
     @Column
-    private String name = "Nearer";
+    private String name;
 
     @Column
-    private String agency_code = "47M292YH ";
+    private String agency_code;
 
     @Column
-    private String email = "agency_email@domain.com";
+    private String email;
 
     @Column
-    private String address = "agency address";
+    private String address;
 
     @Column
-    private String pick_up_address = "agency's pick up address";
+    private String pick_up_address;
 
     @Column
-    private String opening_hours = "From xxAM To yyPM, From Monday To Friday";
+    private String opening_hours;
 
     @Column
-    private Integer phone = 12345678;
+    private Integer phone;
 
     @Column
-    private double longitude = 123456789.123;
+    private double longitude;
 
     @Column
-    private double latitude = 123456789.123;
+    private double latitude;
 
     @Column
-    private Boolean master = true;
+    private Boolean master;
 
     @Column
-    private Boolean active = true;
+    private Boolean active;
 
     public DefAgency(Long agency_id, DefCompany company, DefUser user, List<Contract> contracts,
                      List<DefVehicle> vehicles, String name, String agency_code, String email, String address,

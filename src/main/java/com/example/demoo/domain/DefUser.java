@@ -30,10 +30,10 @@ public class DefUser implements Serializable {
     @Column
     private String password;
 
-    @Column
+    @Column(name = "isActive")
     private boolean isActive;
 
-    @Column
+    @Column(name = "isNotLocked")
     private boolean isNotLocked;
 
     @Column
@@ -51,15 +51,12 @@ public class DefUser implements Serializable {
     @Column
     private String[] authorities;
 
-    // @Column
-    //private boolean profileComplete = false;
-
-    public DefUser(Long user_id, DefClient client_id, DefAgency agency_id, String username, String email,
-                   String password, boolean isActive, boolean isNotLocked, Date lastLoginDate,
-                   Date lastLoginDateDisplay, Date joinDate, String role, String[] authorities) {
+    public DefUser(Long user_id, DefClient client, DefAgency agency, String username, String email, String password,
+                   boolean isActive, boolean isNotLocked, Date lastLoginDate, Date lastLoginDateDisplay, Date joinDate,
+                   String role, String[] authorities) {
         this.user_id = user_id;
-        this.client = client_id;
-        this.agency = agency_id;
+        this.client = client;
+        this.agency = agency;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -73,6 +70,7 @@ public class DefUser implements Serializable {
     }
 
     public DefUser() {
+
     }
 
     public Long getUser_id() {
@@ -91,9 +89,13 @@ public class DefUser implements Serializable {
         this.client = client;
     }
 
-    public DefAgency getAgency() { return agency; }
+    public DefAgency getAgency() {
+        return agency;
+    }
 
-    public void setAgency(DefAgency agency) { this.agency = agency; }
+    public void setAgency(DefAgency agency) {
+        this.agency = agency;
+    }
 
     public String getUsername() {
         return username;
@@ -123,16 +125,16 @@ public class DefUser implements Serializable {
         return isActive;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
     }
 
     public boolean isNotLocked() {
         return isNotLocked;
     }
 
-    public void setNotLocked(boolean notLocked) {
-        isNotLocked = notLocked;
+    public void setNotLocked(boolean isNotLocked) {
+        this.isNotLocked = isNotLocked;
     }
 
     public Date getLastLoginDate() {
@@ -174,8 +176,4 @@ public class DefUser implements Serializable {
     public void setAuthorities(String[] authorities) {
         this.authorities = authorities;
     }
-
-    //public boolean isProfileComplete() { return profileComplete; }
-
-    //public void setProfileComplete(boolean profileComplete) { this.profileComplete = profileComplete; }
 }

@@ -30,6 +30,7 @@ import static com.example.demoo.constants.SecurityConstant.JWT_TOKEN_HEADER;
 
 @RestController
 @RequestMapping(path = {"/", "/user"})
+@CrossOrigin("http://localhost:4200")
 public class DefUserController extends ExceptionHandling {
 
     public static final String EMAIL_SENT = "An email with a new password is sent to : ";
@@ -83,7 +84,7 @@ public class DefUserController extends ExceptionHandling {
                                               @RequestParam("email") String email,
                                               @RequestParam("role") String role,
                                               @RequestParam("isActive") String isActive,
-                                              @RequestParam("NotLocked") String isNotLocked)
+                                              @RequestParam("isNotLocked") String isNotLocked)
             throws EmailExistException, UsernameExistException {
         DefUser newUser = defUserService.addNewUser(username, email, role, Boolean.parseBoolean(isActive),
                 Boolean.parseBoolean(isNotLocked));
@@ -96,7 +97,7 @@ public class DefUserController extends ExceptionHandling {
                                               @RequestParam("email") String email,
                                               @RequestParam("role") String role,
                                               @RequestParam("isActive") String isActive,
-                                              @RequestParam("NotLocked") String isNotLocked)
+                                              @RequestParam("isNotLocked") String isNotLocked)
             throws EmailExistException, UsernameExistException {
         DefUser updatedUser = defUserService.updateUser(currentUser, username, email, role,
                 Boolean.parseBoolean(isActive),
